@@ -1,0 +1,267 @@
+/*
+    eCommerce Edinburgh College Project
+    -----------------------------------
+    Author: Criminus (Anișor Neculai)
+    Website: https://crimin.us
+    GitHub: https://github.com/criminus
+    -----------------------------------
+    common.css : Shapes, sizes
+*/
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+}
+
+.secret {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.contact {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.feedback {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    margin-left: 50px;
+    margin-right: 50px; 
+}
+
+.findus {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background-color: var(--black);
+}
+
+.services {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background-color: var(--black);
+}
+
+.services-block {
+    margin-left: 50px;
+    margin-right: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 10px;
+}
+
+.findus-block {
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.contact-block {
+    margin-left: 50px;
+    margin-right: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 10px;
+}
+
+.newsletter {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.newsletter-block {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.news-form {
+    width: 100%;
+}
+
+.news-button {
+    width: 100%;
+}
+
+.contact-form {
+    margin: 0 auto;
+}
+
+.responsive-flip {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+footer a {
+    text-decoration: none;
+}
+
+.hoverable {
+    width: 18rem;
+    border-radius: 0px;
+}
+
+.hoverable:hover {
+    border: 1px solid var(--black);
+}
+
+.card-new {
+    width: 50%;
+    align-self: center;
+}
+
+.product-rating {
+    position: relative;
+    margin: 15px 0px 10px;
+    height: 20px;
+}
+
+.product-price {
+    color: red;
+    font-size: 18px;
+}
+
+.product-old-price {
+    font-size: 70%;
+    font-weight: 400;
+    color: #8D99AE;
+}
+
+.product-rating:after {
+    content: "";
+    position: absolute;
+    top: 45%;
+    left: 0;
+    right: 0;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    height: 1px;
+    background-color: rgba(49, 49, 49, 0.096);
+}
+
+.add-to-cart .add-to-cart-btn {
+    position: relative;
+    border: 2px solid transparent;
+    height: 40px;
+    padding: 0 30px;
+    background-color: #000000;
+    color: var(--white);
+    text-transform: uppercase;
+    font-weight: 700;
+    border-radius: 40px;
+    -webkit-transition: 0.2s all;
+    transition: 0.2s all;
+}
+
+.add-to-cart .add-to-cart-btn:hover {
+    background-color: var(--white);
+    color: var(--black);
+    border-color: var(--black);
+    padding: 0px 30px 0px 36px;
+}
+
+.add-to-cart .add-to-cart-btn > .product-icon {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.add-to-cart .add-to-cart-btn:hover > .product-icon {
+    opacity: 1;
+    visibility: visible;
+}
+
+.products-block {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.show-desktop {
+    display:none;
+}
+
+.product {
+    width: 100%;
+}
+
+.product-page {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.left-view {
+    margin-top: 10px;
+    width: 45%;
+}
+
+.right-view {
+    margin-top: 10px;
+    width: 45%;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.feedback-block {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.feedback-entry {
+    width: 100%!important;
+}
+
+.feedback-body {
+    padding: 10px;
+    display: flex;
+}
+
+.message {
+    border-left: 1px solid var(--bs-card-border-width);
+    margin-left: 10px;
+}
+
+.message-body {
+    margin-left: 10px;
+}
+
+.card-title a {
+    color: black;
+    text-decoration: none;
+}
+
+.cart-left {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 75%;
+}
+
+.cart-right {
+    width: 21%;
+}
+
+.cart-left .card, .cart-right .card {
+    border-radius: 0px;
+}
+
+.cart-wrapper {
+    display: flex;
+    gap: 10px;
+}
+
+hr.show-hr {
+    display: none;
+}

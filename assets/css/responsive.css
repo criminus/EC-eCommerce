@@ -1,0 +1,129 @@
+/*
+    eCommerce Edinburgh College Project
+    -----------------------------------
+    Author: Criminus (Anișor Neculai)
+    Website: https://crimin.us
+    GitHub: https://github.com/criminus
+    -----------------------------------
+    responsive.css : mobile related css
+*/
+
+@media screen and (max-width: 720px) {
+    .left-side, .right-side {
+        display:none;
+    }
+    .cart-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+    }
+    .cart-left {
+        width: 100%;
+    }
+    
+    .cart-right {
+        width: 100%;
+    }
+    hr.show-hr {
+        display: block;
+    }
+}
+
+@media screen and (min-width: 720px) {
+    .resp {
+        width: 48%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .newsletter-block {
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+    .services-block {
+        margin: 0 auto;
+    }
+    .secret-block {
+        margin: 0 auto;  
+    }
+    .contact-block {
+        margin: 0 auto;  
+    }
+    .responsive-flip {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .resp {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .services-block {
+        width: var(--wrapper);
+        margin: 0 auto;
+    }
+    .secret-block {
+        width: var(--wrapper);
+        margin: 0 auto;  
+    }
+    .contact-block {
+        width: var(--wrapper);
+        margin: 0 auto;  
+    }
+
+    .feedback-sec {
+        width: var(--wrapper);
+        margin: 0 auto;  
+    }
+
+    .feedback {
+        margin: 0 auto;
+    }
+
+    .resp {
+        width: 48%!important;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    .show-desktop {
+        display:inline-block;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .secret {
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+
+    .feedback {
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+
+    .hoverable {
+        width: 25rem!important;
+    }
+
+    .feedback-body {
+        display: flex;
+        flex-flow: column;
+    }
+    .message {
+        margin-left: 0px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .left-view {
+        width: 100%;
+    }
+    
+    .right-view {
+        margin-top: 10px;
+        width: 100%;
+    }
+}

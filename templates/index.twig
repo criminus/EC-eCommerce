@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{sitename}} - {{pageTitle}}</title>
+    {% include 'header.twig' %}
+</head>
+<body>
+
+      {% include 'navigation.twig' %}
+
+      <header class="bg-dark text-white text-center py-5" style="background-image: url('assets/css/images/header.jpg'); background-size: cover; background-position: center;">
+        <div class="container">
+          <h1 class="display-4">MKTime</h1>
+          <p class="lead">Luxury header with a luxury description for a nice website.</p>
+          <a href="{{pages.products.url}}" class="btn btn-outline-light btn-lg">Shop now</a>
+        </div>
+      </header>
+
+      <section class="secret text-center">
+        <h1 class="display-4">Our secret</h1>
+        <br>
+        <div class="secret-block">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ultricies blandit sem non pellentesque. Maecenas convallis odio a ullamcorper ullamcorper. Maecenas sem eros, blandit ac neque vitae, pretium ultricies purus. Mauris massa elit, pharetra at ex nec, accumsan laoreet ante. Vivamus ante erat, pharetra sodales ex non, maximus eleifend augue. Sed in varius lacus, vitae tempor sem. Vestibulum venenatis ex mi, id tincidunt sapien feugiat at.</p>
+        </div>
+      </section>
+
+      <section class="services text-center text-white">
+        <h1 class="display-4">Our services</h1>
+        <br>
+        <div class="services-block">
+            <div class="card" style="max-width: 13rem;">
+                <div class="service-icon text-center">
+                    <iconify-icon icon="fluent:person-support-32-filled" width="80" height="80"></iconify-icon>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">24/7 Support</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+              </div>
+              <div class="card" style="max-width: 13rem;">
+                <div class="service-icon text-center">
+                    <iconify-icon icon="hugeicons:delivery-truck-02" width="80" height="80"></iconify-icon>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">Fast Delivery</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+              </div>
+              <div class="card" style="max-width: 13rem;">
+                <div class="service-icon text-center">
+                    <iconify-icon icon="ri:verified-badge-line" width="80" height="80"></iconify-icon>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">Warranty Service</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+              </div>
+              <div class="card" style="max-width: 13rem;">
+                <div class="service-icon text-center">
+                    <iconify-icon icon="arcticons:eset-payment-protection" width="80" height="80"></iconify-icon>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">Secure Payment</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+              </div>
+        </div>
+      </section>
+
+      <section class="newsletter bg-white text-center text-black">
+        <h1 class="display-4">Subscribe Newsletter</h1>
+        <h3 class="text-body-secondary">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
+        <br>
+        <div class="newsletter-block text-center">
+            <div class="mb-3 news-form">
+                <input type="email" class="form-control" id="subEmail" placeholder="Email address ...">
+            </div>
+            <div class="news-button">
+                <button type="button" onclick="dummyEmail();" class="btn btn-dark">Subscribe</button>
+            </div>
+        </div>
+      </section>
+
+      {% include 'footer.twig' %}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{sitename}} - Warning</title>
+    {% include 'header.twig' %}
+</head>
+<body>
+
+      {% include 'navigation.twig' %}
+
+      <header class="bg-dark text-white text-center py-5" style="background-image: url('assets/css/images/header.jpg'); background-size: cover; background-position: center;">
+        <div class="container">
+          <h1 class="display-4">MKTime</h1>
+          <p class="lead">Luxury header with a luxury description for a nice website.</p>
+          <a href="{{pages.products.url}}" class="btn btn-outline-light btn-lg">Shop now</a>
+        </div>
+      </header>
+
+      <section class="secret text-center">
+        <h1 class="display-4"><iconify-icon inline="true" icon="material-symbols:warning"  style="color: black"></iconify-icon> Warning</h1>
+        <br>
+        <div class="secret-block">
+            <p>It looks like you are trying to add the same item again, If it wasn't a mistake, please go back and add the item again or update the quantity from your cart.</p>
+        </div>
+      </section>
+
+      {% include 'footer.twig' %}

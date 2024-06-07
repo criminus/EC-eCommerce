@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{sitename}} - {{pageTitle}}</title>
+    {% include 'header.twig' %}
+</head>
+<body>
+
+    
+    {% include 'navigation.twig' %}
+
+      <header class="bg-dark text-white text-center py-5" style="background-image: url('assets/css/images/header.jpg'); background-size: cover; background-position: center;">
+        <div class="container">
+          <h1 class="display-4">MKTime</h1>
+          <p class="lead">Luxury header with a luxury description for a nice website.</p>
+          <a href="{{pages.products.url}}" class="btn btn-outline-light btn-lg">Shop now</a>
+        </div>
+      </header>
+
+      <section class="secret text-center">
+        <h1 class="display-4"><iconify-icon inline="true" icon="game-icons:pocket-watch" width="1.2em" height="1.2em"></iconify-icon> Browse our products</h1>
+        <div class="secret-block">
+            <p>Maecenas vehicula convallis massa, in malesuada ex scelerisque quis.</p>
+            <div class="products-block">
+            {% if items is not empty %}
+                {% for item in items %}
+                <div id="productID" class="card hoverable">
+                    <img src="assets/products/{{item.product_id}}.png" class="card-img-top card-new" alt="Product 1">
+                    <div class="card-body">
+                      <h5 class="card-title"><a href="product.php?product_id={{item.product_id}}">{{item.product_name}}</a></h5>
+                      <p class="product-price">
+                      {% if item.sale %}
+                            ${{item.discount}}
+                        {% else %}
+                            ${{item.price}}
+                        {% endif %}
+                        {% if item.sale %}
+                        <del class="product-old-price">${{item.price}}</del>
+                        {% endif %}
+                      </p>
+                      <div class="product-rating">
+                        <iconify-icon icon="material-symbols:star" width="1.2em" height="1.2em"  style="color: black"></iconify-icon>
+                        <iconify-icon icon="material-symbols:star" width="1.2em" height="1.2em"  style="color: black"></iconify-icon>
+                        <iconify-icon icon="material-symbols:star" width="1.2em" height="1.2em"  style="color: black"></iconify-icon>
+                        <iconify-icon icon="material-symbols:star" width="1.2em" height="1.2em"  style="color: black"></iconify-icon>
+                        <iconify-icon icon="material-symbols:star" width="1.2em" height="1.2em"  style="color: black"></iconify-icon>
+                        </div>
+                        <div class="add-to-cart">
+                        {% if user.user_logged_in %}
+                          <a href="add.php?product_id={{item.product_id}}"><button class="add-to-cart-btn" tabindex="-1"><iconify-icon class="product-icon" inline="true" icon="hugeicons:shopping-basket-add-01" width="1.2em" height="1.2em" style="color: #000"></iconify-icon> add<span class="show-desktop">&nbsp;to cart</span></button></a>
+                        {% else %}
+                          <a href="login.php"><button class="add-to-cart-btn" tabindex="-1"><iconify-icon class="product-icon" inline="true" icon="hugeicons:shopping-basket-add-01" width="1.2em" height="1.2em" style="color: #000"></iconify-icon> add<span class="show-desktop">&nbsp;to cart</span></button></a>
+                        {% endif %}
+                        </div>
+                    </div>
+                    </div>
+                    {% endfor %}
+			{% else %}
+				<div class="alert alert-info" role="alert">
+				Our shop is currently empty. Please come back later ! :)
+				</div>
+			{% endif %}  
+            </div>
+        </div>
+      </section>
+
+      {% include 'footer.twig' %}

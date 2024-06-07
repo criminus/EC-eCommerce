@@ -1,0 +1,21 @@
+/*
+    eCommerce Edinburgh College Project
+    -----------------------------------
+    Author: Criminus (Anișor Neculai)
+    Website: https://crimin.us
+    GitHub: https://github.com/criminus
+    -----------------------------------
+    root.css : colors, variables, sizes
+*/
+
+:root {
+    /* Colors */
+    --white: white;
+    --black: black;
+    --bright-blue: #278ce9;
+    --dark-blue: #275784;
+    --darker-blue: #0e3d69;
+    /* Sizes */
+    --wrapper: 1200px;
+    --full: 100%;
+}

@@ -1,0 +1,44 @@
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black sticky-top" style="border-bottom: 1px solid white;">
+        <div class="container-fluid">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link {% if pages.index.isActive %}active{% endif %}" aria-current="page" href="{{pages.index.url}}"><iconify-icon inline="true" icon="material-symbols:home"></iconify-icon> Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link {% if pages.products.isActive or pages.product.isActive %}active{% endif %}" href="{{pages.products.url}}"><iconify-icon inline="true" icon="material-symbols:watch"></iconify-icon> Products</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link {% if pages.contact.isActive %}active{% endif %}" href="{{pages.contact.url}}"><iconify-icon inline="true" icon="ic:baseline-phone"></iconify-icon> Contact</a>
+              </li>
+            </ul>
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            {% if user.user_logged_in %}
+                <li class="nav-item">
+                  <a class="nav-link active" href="">{{user.email}}</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link {% if pages.cart.isActive %}active{% endif %}" href="{{pages.cart.url}}"><iconify-icon inline="true" icon="simple-line-icons:basket"  style="color: white"></iconify-icon> Basket <span class="badge text-bg-light">{{user.basket_quantity}}</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link {% if pages.orders.isActive %}active{% endif %}" href="{{pages.orders.url}}"><iconify-icon inline="true" icon="material-symbols:deployed-code-history"  style="color: white"></iconify-icon> Orders <span class="badge text-bg-light">{{user.total_orders}}</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="logout.php"><iconify-icon inline="true" icon="guidance:exit"  style="color: white"></iconify-icon> Log out</a>
+                </li>
+            {% else %}
+
+              <li class="nav-item">
+                <a class="nav-link {% if pages.login.isActive %}active{% endif %}" href="{{pages.login.url}}"><iconify-icon inline="true" icon="material-symbols:login"></iconify-icon> Login</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link {% if pages.register.isActive %}active{% endif %}" href="{{pages.register.url}}"><iconify-icon inline="true" icon="mdi:register"></iconify-icon> Sign Up</a>
+              </li>
+            {% endif %}
+            </ul>
+          </div>
+        </div>
+      </nav>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{sitename}} - {{pageTitle}}</title>
+    {% include 'header.twig' %}
+</head>
+<body>
+
+      {% include 'navigation.twig' %}
+
+      <header class="bg-dark text-white text-center py-5" style="background-image: url('assets/css/images/header.jpg'); background-size: cover; background-position: center;">
+        <div class="container">
+          <h1 class="display-4">MKTime</h1>
+          <p class="lead">Luxury header with a luxury description for a nice website.</p>
+          <a href="{{pages.products.url}}" class="btn btn-outline-light btn-lg">Shop now</a>
+        </div>
+      </header>
+
+      <section class="secret text-center">
+        <h1 class="display-4"><iconify-icon inline="true" icon="dashicons:cart"  style="color: black"></iconify-icon> Shopping cart</h1>
+        <hr>
+        <div class="secret-block">
+            {% if items is not empty %}
+            <div class="cart-wrapper">
+                <div class="cart-left">
+                    {% for item in items %}
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title"><a href="product.php?product_id={{item.product_id}}">{{item.product_name}} ({{item.quantity}})</a></h5>
+                                <p class="product-price">${{item.price * item.quantity}}</p>
+                                <div class="cart-item-action">
+                                    <div class="cart-padding">
+                                        <a href="decrease.php?product_id={{item.product_id}}" class="btn btn-dark"><iconify-icon inline="true" icon="el:minus" width="1em" height="1em"  style="color: white"></iconify-icon></a>
+                                        <a href="increase.php?product_id={{item.product_id}}" class="btn btn-dark"><iconify-icon inline="true" icon="oi:plus" width="1em" height="1em"  style="color: white"></iconify-icon></a>
+                                    </div>
+                                </div>
+                                <hr>
+                                <p>{{item.description}}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <hr class="show-hr">
+                <div class="cart-right">
+                    <div class="card">
+                        <div class="card-body">
+                            <form method="post" action="includes/checkout_form.php">
+                                <h5 class="card-title">Summary</h5>
+                                <hr>
+                                <p class="card-text">Products: {{user.basket_quantity}}<br>Total: {{total}}</p>
+                                <button type="submit" class="btn btn-dark"><iconify-icon inline="true" icon="carbon:wireless-checkout" width="1em" height="1em"  style="color: white"></iconify-icon> Checkout</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+                <div class="alert alert-info" role="alert">
+                    Your cart is empty.
+                </div>
+            {% endif %}
+        </div>
+      </section>
+
+      {% include 'footer.twig' %}

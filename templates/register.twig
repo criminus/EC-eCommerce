@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{sitename}} - {{pageTitle}}</title>
+    {% include 'header.twig' %}
+</head>
+<body>
+
+    
+    {% include 'navigation.twig' %}
+
+      <header class="bg-dark text-white text-center py-5" style="background-image: url('assets/css/images/header.jpg'); background-size: cover; background-position: center;">
+        <div class="container">
+          <h1 class="display-4">MKTime</h1>
+          <p class="lead">Luxury header with a luxury description for a nice website.</p>
+          <a href="{{pages.products.url}}" class="btn btn-outline-light btn-lg">Shop now</a>
+        </div>
+      </header>
+
+      <section class="secret text-center">
+        <h1 class="display-4"><iconify-icon inline="true" icon="uiw:usergroup-add" width="1.2em" height="1.2em"></iconify-icon> Account creation</h1>
+        <br>
+        <div class="secret-block">
+            <p>You are about to create an account on website. Please read the fields descriptions carefully. Please never share, or use the same password across other websites.</p>
+            <form class="row g-3" action="includes/register_form.php" method="post">
+                {% if form_message %}
+                    <div class="alert alert-{{ form_message_type }}" role="alert">
+                        {{ form_message }}
+                    </div>
+                {% endif %}
+                {% if errors is not empty %}
+                    <div class="alert alert-danger">
+                            {% for error in errors %}
+                            {{ error }}<br>
+                            {% endfor %}
+                    </div>
+                {% endif %}
+                <div class="responsive-flip">
+                    <div class="col-md-6 resp">
+                        <label for="firstName" class="form-label">First name</label>
+                        <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First name" required>
+                    </div>
+                    <div class="col-md-6 resp">
+                        <label for="lastName" class="form-label">Last name</label>
+                        <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last name" required>
+                    </div>
+                </div>
+                <div class="responsive-flip">
+                    <div class="col-md-6 resp">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+                    </div>
+                    <div class="col-md-6 resp">
+                        <label for="confPassword" class="form-label">Confirm Password</label>
+                        <input type="password" class="form-control" id="confPassword" name="confPassword" placeholder="Password" required>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <label for="emailAddress" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="emailAddress" name="emailAddress" placeholder="Email address" required>
+                </div>
+                <button type="submit" class="btn btn-dark">Create account</button>
+            </form>
+        </div>
+      </section>
+
+      {% include 'footer.twig' %}

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{sitename}} - {{pageTitle}}</title>
+    {% include 'header.twig' %}
+</head>
+<body>
+
+    
+    {% include 'navigation.twig' %}
+
+      <header class="bg-dark text-white text-center py-5" style="background-image: url('assets/css/images/header.jpg'); background-size: cover; background-position: center;">
+        <div class="container">
+          <h1 class="display-4">MKTime</h1>
+          <p class="lead">Luxury header with a luxury description for a nice website.</p>
+          <a href="{{pages.products.url}}" class="btn btn-outline-light btn-lg">Shop now</a>
+        </div>
+      </header>
+
+      <section class="secret text-center">
+        <h1 class="display-4"><iconify-icon inline="true" icon="game-icons:pocket-watch" width="1.2em" height="1.2em"></iconify-icon> {{pageTitle}} </h1>
+        <div class="secret-block">
+            <div class="products-block">
+                <div id="productID{{product_id}}" class="card hoverable product">
+                    <div class="product-page">
+                        <div class="left-view">
+                            <h4>{{pageTitle}}</h4>
+                            <p class="text-muted">Reviews: {{total_feedback}} <a href="#feedback">(view reviews for this item)</a></p>
+                            <img src="assets/products/{{product_id}}.png" class="card-img-top card-new product-view" alt="Product 1">
+                            <div class="product-rating">
+                                <iconify-icon icon="material-symbols:star" width="1.2em" height="1.2em"  style="color: black"></iconify-icon>
+                                <iconify-icon icon="material-symbols:star" width="1.2em" height="1.2em"  style="color: black"></iconify-icon>
+                                <iconify-icon icon="material-symbols:star" width="1.2em" height="1.2em"  style="color: black"></iconify-icon>
+                                <iconify-icon icon="material-symbols:star" width="1.2em" height="1.2em"  style="color: black"></iconify-icon>
+                                <iconify-icon icon="material-symbols:star" width="1.2em" height="1.2em"  style="color: black"></iconify-icon>
+                            </div>
+                        </div>
+                        <div class="right-view">
+                            <p class="product-price">
+                            {% if product_sale %}
+                                ${{product_discount}}
+                            {% else %}
+                                ${{product_price}}
+                            {% endif %}
+                            {% if product_sale %}
+                                <del class="product-old-price">${{product_price}}</del>
+                            {% endif %}
+                            </p>
+                            <p>{{product_desc}}</p>
+                            {% if user.user_logged_in %}
+                            <form class="row g-3">
+                                <div class="col">
+                                  <label for="inputPassword2" class="visually-hidden">Password</label>
+                                  <input type="number" class="form-control" id="inputPassword2" min="1" max="99" placeholder="1">
+                                </div>
+                                <div class="col-auto">
+                                  <button type="submit" class="btn btn btn-dark mb-3">Add</button>
+                                </div>
+                              </form>
+                            {% else %}
+                            <div class="alert alert-info" role="alert">
+                                Please <a href='login.php'>Sign in</a> or <a href='register.php'>Sign up</a> to purchase this product.
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </section>
+
+      <section class="feedback-sec">
+        <div id="feedback">
+            <div class="feedback">
+                <h4><iconify-icon inline="true" icon="uil:feedback" width="1.2rem" height="1.2rem"  style="color: black"></iconify-icon> Feedback for: {{pageTitle}}</h4>
+                <hr>
+                <div class="feedback-block">
+                {% if product_feedback is not empty %}
+                    {% for feedback in product_feedback %}
+                        <div id="productID{{product_id}}" class="card feedback-entry">
+                            <div id="feedback_id_{{feedback.feedback_id}}" class="feedback-body">
+                                <div class="left-profile">
+                                    <iconify-icon icon="carbon:user-avatar-filled-alt" width="4rem" height="4rem"  style="color: black"></iconify-icon>
+                                </div>
+                                <div class="message">
+                                    <div class="message-body">
+                                        <h6>Review from user: {{feedback.user_id}}</h6>
+                                        <p>{{feedback.feedback}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p>There is currently no feedback for this product.{% if not user.user_logged_in %}<br>Please <a href='login.php'>Sign in</a> or <a href='register.php'>Sign up</a> to review this product.{% endif %}</p>
+                {% endif %}
+                </div>
+                <div class="feedback-form text-center" style="margin-top: 20px;">
+                    {% if user.user_logged_in %}
+                    <form method="post" action="includes/feedback_form.php">
+                        <div class="mb-3">
+                            {% if errors is not empty %}
+                                <div class="alert alert-danger">
+                                        {% for error in errors %}
+                                        {{ error }}<br>
+                                        {% endfor %}
+                                </div>
+                            {% endif %}
+                            <input type="hidden" name="product_id" value="{{product_id}}">
+                            <label for="feedbackMessage" class="form-label">Your message</label>
+                            <textarea class="form-control" id="feedbackMessage" name="feedbackMessage" rows="3"></textarea>
+                          </div>
+                          <button type="submit" class="btn btn-dark">Submit</button>
+                    </form>
+                    {% else %}
+
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+      </section>
+
+      {% include 'footer.twig' %}

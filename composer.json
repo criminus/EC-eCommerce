@@ -1,0 +1,21 @@
+{
+    "name": "criminus/ecommerce",
+    "description": "A simple eCommerce website built with HTML, CSS, PHP, JavaScript, Bootstrap, and of course, Twig.",
+    "type": "project",
+    "require": {
+        "twig/twig": "^3.10"
+    },
+    "license": "None",
+    "autoload": {
+        "psr-4": {
+            "Criminus\\Ecommerce\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "criminus",
+            "email": "neculaianisor@gmail.com"
+        }
+    ],
+    "minimum-stability": "beta"
+}
