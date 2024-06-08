@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 07, 2024 at 03:06 AM
+-- Generation Time: Jun 08, 2024 at 02:30 PM
 -- Server version: 5.7.31
 -- PHP Version: 7.4.9
 
@@ -36,16 +36,8 @@ CREATE TABLE IF NOT EXISTS `basket` (
   `total` decimal(10,2) DEFAULT NULL,
   PRIMARY KEY (`basket_id`),
   UNIQUE KEY `unique_user_product` (`user_id`,`product_id`),
-  KEY `product_id` (`product_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `basket`
---
-
-INSERT INTO `basket` (`basket_id`, `user_id`, `product_id`, `quantity`, `total`) VALUES
-(3, 2, 2, 1, '225.99'),
-(4, 2, 3, 1, '50.00');
+  KEY `fk_basket_product_id` (`product_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -60,9 +52,9 @@ CREATE TABLE IF NOT EXISTS `feedback` (
   `user_id` int(11) DEFAULT NULL,
   `feedback` text NOT NULL,
   PRIMARY KEY (`feedback_id`),
-  KEY `product_id` (`product_id`),
-  KEY `user_id` (`user_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+  KEY `fk_feedback_user_id` (`user_id`),
+  KEY `fk_feedback_product_id` (`product_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `feedback`
@@ -88,8 +80,8 @@ CREATE TABLE IF NOT EXISTS `orders` (
   `order_date` datetime NOT NULL,
   `total_amount` decimal(10,2) NOT NULL,
   PRIMARY KEY (`order_id`),
-  KEY `user_id` (`user_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+  KEY `fk_orders_user_id` (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `orders`
@@ -97,7 +89,12 @@ CREATE TABLE IF NOT EXISTS `orders` (
 
 INSERT INTO `orders` (`order_id`, `user_id`, `order_date`, `total_amount`) VALUES
 (1, 1, '2024-06-07 03:43:46', '150.00'),
-(2, 1, '2024-06-07 03:44:33', '951.98');
+(2, 1, '2024-06-07 03:44:33', '951.98'),
+(3, 2, '2024-06-07 04:07:20', '275.99'),
+(4, 1, '2024-06-08 14:33:11', '601.98'),
+(5, 2, '2024-06-08 14:45:20', '289.98'),
+(6, 2, '2024-06-08 14:46:27', '225.99'),
+(7, 2, '2024-06-08 15:28:45', '992.95');
 
 -- --------------------------------------------------------
 
@@ -113,9 +110,9 @@ CREATE TABLE IF NOT EXISTS `order_details` (
   `quantity` int(11) NOT NULL,
   `price` decimal(10,2) NOT NULL,
   PRIMARY KEY (`order_detail_id`),
-  KEY `order_id` (`order_id`),
-  KEY `product_id` (`product_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+  KEY `fk_order_details_order_id` (`order_id`),
+  KEY `fk_order_details_product_id` (`product_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `order_details`
@@ -126,7 +123,17 @@ INSERT INTO `order_details` (`order_detail_id`, `order_id`, `product_id`, `quant
 (2, 2, 1, 1, '125.99'),
 (3, 2, 2, 1, '225.99'),
 (4, 2, 5, 1, '100.00'),
-(5, 2, 8, 1, '500.00');
+(5, 2, 8, 1, '500.00'),
+(6, 3, 2, 1, '225.99'),
+(7, 3, 3, 1, '50.00'),
+(8, 4, 2, 2, '225.99'),
+(9, 4, 4, 2, '75.00'),
+(10, 5, 1, 1, '125.99'),
+(11, 5, 4, 1, '75.00'),
+(12, 5, 6, 1, '88.99'),
+(13, 6, 2, 1, '225.99'),
+(14, 7, 2, 4, '225.99'),
+(15, 7, 6, 1, '88.99');
 
 -- --------------------------------------------------------
 
@@ -144,7 +151,7 @@ CREATE TABLE IF NOT EXISTS `products` (
   `sale` tinyint(1) DEFAULT NULL,
   `discount` decimal(5,2) DEFAULT NULL,
   PRIMARY KEY (`product_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `products`
@@ -176,15 +183,47 @@ CREATE TABLE IF NOT EXISTS `users` (
   `reg_date` date DEFAULT NULL,
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`user_id`, `first_name`, `last_name`, `email`, `pass`, `reg_date`) VALUES
-(1, 'Anisor', 'Neculai', 'neculaioffi@gmail.com', 'Test123', '2024-06-06'),
-(2, 'Anisor1', 'Neculai1', 'neculaioffi1@gmail.com', 'Test123', '2024-06-06');
+(1, 'Anisor', 'Neculai', 'test1@gmail.com', 'Test123', '2024-06-06'),
+(2, 'Anisor1', 'Neculai1', 'test2@gmail.com', 'Test123', '2024-06-06'),
+(3, 'TestFirstName1', 'TestLastName1', 'testemail1@gmail.com', 'Password1', '2024-06-08');
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `basket`
+--
+ALTER TABLE `basket`
+  ADD CONSTRAINT `fk_basket_product_id` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_basket_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `feedback`
+--
+ALTER TABLE `feedback`
+  ADD CONSTRAINT `fk_feedback_product_id` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_feedback_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `orders`
+--
+ALTER TABLE `orders`
+  ADD CONSTRAINT `fk_orders_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `order_details`
+--
+ALTER TABLE `order_details`
+  ADD CONSTRAINT `fk_order_details_order_id` FOREIGN KEY (`order_id`) REFERENCES `orders` (`order_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_order_details_product_id` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
