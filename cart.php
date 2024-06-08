@@ -35,4 +35,4 @@ $data = array_merge($navigation, [
 ]);
 
 // Render the template
-echo $twig->render('cart.twig', $data);
+echo $twig->render($template, $data);

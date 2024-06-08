@@ -23,6 +23,7 @@
         <hr>
         <div class="secret-block">
             {% if previousOrders is not empty %}
+            <div class="table-responsive-lg">
                 <table class="table">
                 <thead>
                     <tr>
@@ -41,7 +42,7 @@
                 {% endfor %}
                 </tbody>
                 </table>
-
+            </div>
             {% else %}
                 <p>You don't have any previous orders.</p>
             {% endif %}

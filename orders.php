@@ -10,7 +10,6 @@ require 'includes/orders_functions.php';
 //Start Session
 session_start();
 
-
 $prev_preders = '';
 if ((isset($_SESSION['loggedin']) && $_SESSION['loggedin'])) {
     $user_id        = $_SESSION['user_id'];
@@ -34,4 +33,4 @@ $data = array_merge($navigation, [
 ]);
 
 // Render the template
-echo $twig->render('orders.twig', $data);
+echo $twig->render($template, $data);

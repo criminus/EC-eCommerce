@@ -51,6 +51,9 @@ function checkout(
         $stmt = $pdo->prepare($query);
         $stmt->execute(['user_id' => $userId]);
 
+        //Save the order ID in session so we can display it at confirmation
+        $_SESSION['order_number'] = $orderId;
+
         // Commit transaction
         $pdo->commit();
 
